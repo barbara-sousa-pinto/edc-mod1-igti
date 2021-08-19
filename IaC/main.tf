@@ -1,6 +1,6 @@
 
 resource "aws_s3_bucket" "datalake" {
-  bucket = "${var.base_bucket_name}"
+  bucket = var.base_bucket_name
   acl = "private"
   server_side_encryption_configuration {
     rule {
@@ -15,7 +15,7 @@ resource "aws_s3_bucket" "datalake" {
 }
 
 resource "aws_s3_bucket_object" "codigo_spark" {
-  bucket = aws_s3_bucket.datalake
+  bucket = aws_s3_bucket.datalake.id
   key = "emr-code/pyspark/job_spark_from_tf.py"
   acl = "private"
   source = "../job_spark.py"
