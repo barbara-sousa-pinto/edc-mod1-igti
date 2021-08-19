@@ -20,6 +20,6 @@ censo = (
     .write
     .mode('overwrite')
     .format('parquet')
-    # .partitionBy("NU_ANO")
+    .partitionBy("NU_ANO")
     .save('s3://datalake-barbara/consumer-zone/censo')
 )

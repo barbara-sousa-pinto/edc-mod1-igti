@@ -21,7 +21,7 @@ def handler(event, context):
                     'Market': 'SPOT',
                     'InstanceRole': 'MASTER',
                     'InstanceType': 'm5.xlarge',
-                    'InstanceCount': 1,
+                    'InstanceCount': 2,
                 },
                 {
                     'Name': 'Worker nodes',
