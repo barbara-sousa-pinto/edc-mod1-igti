@@ -11,7 +11,7 @@ censo = (
     .format('csv')
     .option('header', True)
     .option('inferSchema', True)
-    .option('delimiter', ';')
+    .option('delimiter', '|')
     .load('s3://datalake-barbara/raw-data/censo/')
 )
 
@@ -20,6 +20,6 @@ censo = (
     .write
     .mode('overwrite')
     .format('parquet')
-    .partitionBy("NU_ANO")
+    # .partitionBy("NU_ANO")
     .save('s3://datalake-barbara/consumer-zone/censo')
 )
