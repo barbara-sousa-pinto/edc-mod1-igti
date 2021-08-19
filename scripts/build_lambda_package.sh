@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd Iac
+cd IaC
 
 # Declara variavel para reutilização nas validações do diretório
 PACKAGE="package"
