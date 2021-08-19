@@ -1,25 +1,25 @@
 from pyspark.sql import SparkSession
 
 spark = (
-    SparkSession.builder.appName('Csv_to_Spark')
+    SparkSession.builder.appName('Csv_to_Parquet')
     .getOrCreate()
 )
 
-enem = (
+censo = (
     spark
     .read
     .format('csv')
     .option('header', True)
     .option('inferSchema', True)
     .option('delimiter', ';')
-    .load('s3://datalake-barbara/raw-data/MICRODADOS_ENEM_2019.csv')
+    .load('s3://datalake-barbara/raw-data/censo/')
 )
 
 (
-    enem
+    censo
     .write
     .mode('overwrite')
     .format('parquet')
     .partitionBy("NU_ANO")
-    .save('s3://datalake-barbara/consumer-zone')
+    .save('s3://datalake-barbara/consumer-zone/censo')
 )
